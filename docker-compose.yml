@@ -1,0 +1,16 @@
+nginx:
+  image: nginx
+  ports:
+   - "80:80"
+  volumes:
+   - ./nginx/:/etc/nginx/conf.d
+  links:
+   - web
+web:
+  build: .
+  volumes:
+   - code/:/code
+  links:
+   - redis
+redis:
+  image: redis
